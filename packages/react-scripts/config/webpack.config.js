@@ -341,6 +341,18 @@ module.exports = function(webpackEnv) {
                 name: 'static/media/[name].[hash:8].[ext]',
               },
             },
+            { 
+              test: /\.svg$/,
+              use: [
+                {
+                  loader: require.resolve('url-loader'),
+                },
+                {
+                  loader: require.resolve('svg-colorize-loader'),
+                  options: { iconColor: '#000000', "secondary-color": '#ffffff' },
+                }
+              ]
+            },
             // Process application JS with Babel.
             // The preset includes JSX, Flow, TypeScript, and some ESnext features.
             {
